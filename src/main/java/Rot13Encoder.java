@@ -5,10 +5,10 @@ public class Rot13Encoder {
 
 
     public static void main(String[] args){
-        encode("Hello, World");
-        encode("Lorem ipsum!0987!");
+        encode("Hello, World", OFFSET);
+        encode("Lorem ipsum!0987!", OFFSET);
     }
-    private static void encode(String input){
+    private static void encode(String input, int offset){
         input = input.toUpperCase();
         StringBuilder sb = new StringBuilder();
         for (int i =0; i< input.length();i++){
@@ -17,7 +17,7 @@ public class Rot13Encoder {
                 sb.append(input.charAt(i));
                 continue;
             }
-            int newPosition = (int) input.charAt(i) + OFFSET;
+            int newPosition = (int) input.charAt(i) + offset;
             if(newASCIIGreaterThan90(newPosition)){
                 newPosition -=26;
             }
